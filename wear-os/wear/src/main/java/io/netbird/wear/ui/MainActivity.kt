@@ -25,19 +25,29 @@ class MainActivity : ComponentActivity() {
 
         val demoMode = intent?.getBooleanExtra(EXTRA_DEMO, false) ?: false
         val demoScreen = intent?.getStringExtra(EXTRA_DEMO_SCREEN) ?: "HOME"
-        val demoLocale = intent?.getStringExtra(EXTRA_DEMO_LOCALE) ?: "en"
+        val demoLocale = intent?.getStringExtra(EXTRA_DEMO_LOCALE)
 
         setContent {
-            val baseConfig = LocalConfiguration.current
-            val customConfig = Configuration(baseConfig).apply {
-                setLocale(Locale(demoLocale))
-            }
-            val localizedContext = LocalContext.current.createConfigurationContext(customConfig)
+            if (!demoLocale.isNullOrBlank()) {
+                val baseConfig = LocalConfiguration.current
+                val customConfig = Configuration(baseConfig).apply {
+                    setLocale(Locale(demoLocale))
+                }
+                val localizedContext = LocalContext.current.createConfigurationContext(customConfig)
 
-            CompositionLocalProvider(
-                LocalConfiguration provides customConfig,
-                LocalContext provides localizedContext,
-            ) {
+                CompositionLocalProvider(
+                    LocalConfiguration provides customConfig,
+                    LocalContext provides localizedContext,
+                ) {
+                    MaterialTheme {
+                        NetBirdWearApp(
+                            initialCommand = initialCommand,
+                            demoMode = demoMode,
+                            demoScreen = demoScreen,
+                        )
+                    }
+                }
+            } else {
                 MaterialTheme {
                     NetBirdWearApp(
                         initialCommand = initialCommand,

@@ -3,6 +3,12 @@ name: build release
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Existing release tag to rebuild (for example v1.0.4)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -25,25 +31,83 @@ jobs:
       apk_path: ${{ steps.build.outputs.apk_path }}
       bundle_path: ${{ steps.build.outputs.bundle_path }}
     steps:
-      - name: Checkout repository
+      # A manual run uses the repaired workflow from main, but always builds
+      # the existing release's tagged source, never unrelated main-branch code.
+      - name: Resolve existing release and source commit
+        id: version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG_NAME: ${{ github.event_name == 'workflow_dispatch' && inputs.release_tag || github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$TAG_NAME" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
+            echo "::error::Invalid release tag. Use an existing tag such as v1.0.4."
+            exit 1
+          fi
+          gh api "repos/$GH_REPO/releases/tags/$TAG_NAME" --silent
+          gh api "repos/$GH_REPO/git/ref/tags/$TAG_NAME" --silent
+          SOURCE_SHA=$(gh api "repos/$GH_REPO/commits/$TAG_NAME" --jq '.sha')
+          if [[ ! "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::Cannot resolve release tag to a source commit."
+            exit 1
+          fi
+          echo "Building release $TAG_NAME from $SOURCE_SHA"
+          echo "version_name=$TAG_NAME" >> "$GITHUB_OUTPUT"
+          echo "source_sha=$SOURCE_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout release source
         uses: actions/checkout@v4
         with:
+          ref: ${{ steps.version.outputs.source_sha }}
           submodules: recursive
 
-      - name: Get version
-        id: version
+      # Firebase is optional for community builds. An absent file disables it;
+      # an empty file enables the plugin and fails later in processGoogleServices.
+      - name: Prepare optional Firebase configuration
+        env:
+          GOOGLE_JSON: ${{ secrets.GOOGLE_JSON }}
         run: |
-          TAG_NAME=${{ github.event.release.tag_name }}
-          echo "version_name=$TAG_NAME" >> $GITHUB_OUTPUT
+          set -euo pipefail
+          if [[ -z "$GOOGLE_JSON" ]]; then
+            echo "::notice::GOOGLE_JSON is not configured; building without Firebase."
+          else
+            if ! config=$(printf '%s' "$GOOGLE_JSON" | base64 --decode 2>/dev/null); then
+              echo "::error::GOOGLE_JSON must contain base64-encoded google-services.json."
+              exit 1
+            fi
+            if ! printf '%s' "$config" | jq -e '
+              type == "object" and
+              (.project_info | type == "object") and
+              (.client | type == "array") and
+              any(.client[]; .client_info.android_client_info.package_name == "io.netbird.client")
+            ' >/dev/null 2>&1; then
+              echo "::error::GOOGLE_JSON must decode to a Firebase JSON object with a client for io.netbird.client."
+              exit 1
+            fi
+            printf '%s\n' "$config" > app/google-services.json
+          fi
 
-      - name: Write google-services.json
+      - name: Validate signing secrets and write keystore
+        env:
+          GPLAY_KEYSTORE: ${{ secrets.GPLAY_KEYSTORE }}
         run: |
-          echo "${{ secrets.GOOGLE_JSON }}" | base64 -d > app/google-services.json
-
-      - name: Write keystore file
-        run: |
-          echo "${{ secrets.GPLAY_KEYSTORE }}" | base64 -d > gplay.keystore
-          echo "NETBIRD_UPLOAD_STORE_FILE=$GITHUB_WORKSPACE/gplay.keystore" >> $GITHUB_ENV
+          set -euo pipefail
+          for name in GPLAY_KEYSTORE NETBIRD_UPLOAD_KEY_ALIAS NETBIRD_UPLOAD_KEY_PASSWORD NETBIRD_UPLOAD_STORE_PASSWORD; do
+            if [[ -z "${!name:-}" ]]; then
+              echo "::error::Missing signing secret $name. Configure it in the android-release environment; use the same signing key for phone and watch."
+              exit 1
+            fi
+          done
+          if ! printf '%s' "$GPLAY_KEYSTORE" | base64 --decode > gplay.keystore 2>/dev/null; then
+            echo "::error::GPLAY_KEYSTORE must contain the base64-encoded signing keystore."
+            exit 1
+          fi
+          if [[ ! -s gplay.keystore ]] || ! keytool -list -keystore gplay.keystore -storepass:env NETBIRD_UPLOAD_STORE_PASSWORD -alias "$NETBIRD_UPLOAD_KEY_ALIAS" >/dev/null 2>&1; then
+            echo "::error::Cannot open signing keystore; check GPLAY_KEYSTORE, NETBIRD_UPLOAD_STORE_PASSWORD and NETBIRD_UPLOAD_KEY_ALIAS."
+            exit 1
+          fi
+          echo "NETBIRD_UPLOAD_STORE_FILE=$GITHUB_WORKSPACE/gplay.keystore" >> "$GITHUB_ENV"
 
       # Must stay identical to the Compute version code step in the sibling
       # workflow. build-release.yml and build-snapshot.yml feed the same Play
@@ -96,4 +160,5 @@ jobs:
           files: |
             ${{ steps.build.outputs.apk_path }}
             ${{ steps.build.outputs.bundle_path }}
-          tag_name: ${{ github.event.release.tag_name }}
+          tag_name: ${{ steps.version.outputs.version_name }}
+          fail_on_unmatched_files: true
