@@ -1,0 +1,39 @@
+# Gradle / build
+.gradle/
+build/
+*/build/
+local.properties
+.toolchain/
+research/
+netbird-build/
+dist/*.apk
+*.iml
+.idea/
+.DS_Store
+
+# NetBird app build output (patched upstream tree is generated, not vendored)
+patches/*.orig
+
+# Local build caches and generated upstream tree
+.build/
+.gradle-home/
+.android-home/
+.kotlin/
+.github-auth/
+.release/
+
+# Signing keys, credentials and device diagnostics must never be published
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.pem
+.env
+.env.*
+!.env.example
+*.log
+*.hprof
+captures/
+*.apk
+*.aab
+*.aar

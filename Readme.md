@@ -28,7 +28,10 @@
 
 <br>
 
-# NetBird Android client
+# NetBird Android Client with Wear OS Companion
+
+> **Note**: This is an unofficial fork adding **Wear OS companion support** (tested on Samsung Galaxy Watch 4).
+> For the standalone watch application source, build scripts, architecture documentation, and APK releases, see [`wear-os/`](wear-os/).
 
 The NetBird Android client allows connections from mobile devices running Android to private resources in the NetBird network.
 

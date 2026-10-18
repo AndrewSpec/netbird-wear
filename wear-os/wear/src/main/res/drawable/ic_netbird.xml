@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Original NetBird artwork from android-client nb_logo_full.xml (GPL-3.0). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="31dp" android:height="23dp"
+    android:viewportWidth="31" android:viewportHeight="23">
+    <path android:fillColor="#F68330"
+        android:pathData="M21.4651 0.568359C17.8193 0.902835 16.0047 3.00167 15.3191 4.06363L4.66602 22.5183H17.5182L30.1949 0.568359H21.4651Z" />
+    <path android:fillColor="#F68330"
+        android:pathData="M17.5265 22.5187L0 3.9302C0 3.9302 19.8177 -1.39633 21.7493 15.2188L17.5265 22.5187Z" />
+    <path android:fillColor="#F35E32"
+        android:pathData="M14.9255 4.75055L9.54883 14.0657L17.5177 22.5196L21.7405 15.2029C21.0715 9.49174 18.287 6.37276 14.9255 4.74219Z" />
+</vector>

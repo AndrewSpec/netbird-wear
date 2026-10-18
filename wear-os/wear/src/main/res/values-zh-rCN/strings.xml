@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NetBird</string>
+    <string name="tile_label">NetBird VPN</string>
+
+    <string name="status_unknown">正在连接手机…</string>
+    <string name="status_disconnected">已断开</string>
+    <string name="status_connecting">正在连接…</string>
+    <string name="status_connected">已连接</string>
+    <string name="status_disconnecting">正在断开…</string>
+    <string name="status_needs_login">需要登录</string>
+    <string name="status_needs_setup">在手机上设置 NetBird</string>
+    <string name="status_no_network">无网络</string>
+    <string name="status_error">错误</string>
+    <string name="status_phone_unavailable">手机不可用</string>
+
+    <string name="hint_phone_unavailable">在手机上打开 NetBird Wear 并检查与手表的连接。</string>
+    <string name="hint_needs_login">在手机上打开 NetBird 并登录。</string>
+    <string name="hint_needs_setup">在手机上打开 NetBird，添加配置文件并允许 VPN 请求。</string>
+
+    <string name="action_connect">连接</string>
+    <string name="action_disconnect">断开</string>
+    <string name="action_refresh">刷新</string>
+    <string name="action_send">发送</string>
+
+    <string name="label_device">设备: %1$s</string>
+    <string name="label_sending">正在发送至手机…</string>
+    <string name="label_no_phone_node">未与手机建立 Data Layer 连接</string>
+    <string name="label_send_failed">无法连接到手机</string>
+    <string name="label_no_response">手机未响应</string>
+    <string name="label_phone_error">请在手机的 NetBird 中查看详情。</string>
+    <string name="tile_toggle">切换</string>
+    <string name="tile_open">打开</string>
+    <string name="label_peers">节点</string>
+    <string name="label_resources">资源</string>
+    <string name="label_no_peers">未找到节点</string>
+    <string name="label_no_resources">未找到资源</string>
+</resources>

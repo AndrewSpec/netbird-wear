@@ -86,6 +86,9 @@ dependencies {
     implementation(libs.browser)  // Added for CustomTabsIntent
     implementation(libs.zxing)
 
+    // Wear OS companion bridge (Data Layer).
+    implementation("com.google.android.gms:play-services-wearable:18.2.0")
+
     if (hasGoogleServicesJson) {
         implementation(platform(libs.firebase.bom))
         implementation(libs.firebase.crashlytics)

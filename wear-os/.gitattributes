@@ -1,0 +1,9 @@
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+*.bat text eol=crlf whitespace=cr-at-eol
+# Unified diff context lines intentionally contain one space.
+*.patch -text whitespace=-blank-at-eol
+*.jar binary
+*.png binary
+*.webp binary

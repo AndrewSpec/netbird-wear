@@ -1,0 +1,35 @@
+name: Watch tests and source checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Install Android SDK
+        run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - name: Build and test watch (no signing secrets)
+        run: |
+          export ANDROID_USER_HOME="$RUNNER_TEMP/android-home"
+          mkdir -p "$ANDROID_USER_HOME"
+          ./gradlew :wear:testDebugUnitTest :wear:assembleDebug --no-daemon
+      - name: Check publication contents and shell syntax
+        run: |
+          python3 scripts/check-publication.py
+          bash -n scripts/*.sh
+      - name: Verify phone patch against pinned upstream
+        run: |
+          git init "$RUNNER_TEMP/phone"
+          git -C "$RUNNER_TEMP/phone" fetch --depth 1 https://github.com/netbirdio/android-client.git ad7865a2c3cc1bc940bf63512ccab1819ebf53a6
+          git -C "$RUNNER_TEMP/phone" checkout --detach FETCH_HEAD
+          git -C "$RUNNER_TEMP/phone" apply --check "$GITHUB_WORKSPACE/patches/netbird-wear.patch"

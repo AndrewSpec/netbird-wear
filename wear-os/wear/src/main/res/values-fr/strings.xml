@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NetBird</string>
+    <string name="tile_label">NetBird VPN</string>
+
+    <string name="status_unknown">Connexion au téléphone…</string>
+    <string name="status_disconnected">Déconnecté</string>
+    <string name="status_connecting">Connexion en cours…</string>
+    <string name="status_connected">Connecté</string>
+    <string name="status_disconnecting">Déconnexion…</string>
+    <string name="status_needs_login">Connexion requise</string>
+    <string name="status_needs_setup">Configurer NetBird sur le téléphone</string>
+    <string name="status_no_network">Aucun réseau</string>
+    <string name="status_error">Erreur</string>
+    <string name="status_phone_unavailable">Téléphone indisponible</string>
+
+    <string name="hint_phone_unavailable">Ouvrez NetBird Wear sur le téléphone et vérifiez la connexion avec la montre.</string>
+    <string name="hint_needs_login">Ouvrez NetBird sur le téléphone et connectez-vous.</string>
+    <string name="hint_needs_setup">Ouvrez NetBird sur le téléphone, ajoutez un profil et autorisez le VPN.</string>
+
+    <string name="action_connect">Connecter</string>
+    <string name="action_disconnect">Déconnecter</string>
+    <string name="action_refresh">Actualiser</string>
+    <string name="action_send">Envoyer</string>
+
+    <string name="label_device">Appareil : %1$s</string>
+    <string name="label_sending">Envoi au téléphone…</string>
+    <string name="label_no_phone_node">Aucune connexion Data Layer avec le téléphone</string>
+    <string name="label_send_failed">Impossible de joindre le téléphone</string>
+    <string name="label_no_response">Le téléphone n\'a pas répondu</string>
+    <string name="label_phone_error">Vérifiez NetBird sur votre téléphone pour plus de détails.</string>
+    <string name="tile_toggle">Basculer</string>
+    <string name="tile_open">Ouvrir</string>
+    <string name="label_peers">Pairs</string>
+    <string name="label_resources">Ressources</string>
+    <string name="label_no_peers">Aucun pair trouvé</string>
+    <string name="label_no_resources">Aucune ressource trouvée</string>
+</resources>

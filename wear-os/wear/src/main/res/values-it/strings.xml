@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NetBird</string>
+    <string name="tile_label">NetBird VPN</string>
+
+    <string name="status_unknown">Connessione al telefono…</string>
+    <string name="status_disconnected">Disconnesso</string>
+    <string name="status_connecting">Connessione in corso…</string>
+    <string name="status_connected">Connesso</string>
+    <string name="status_disconnecting">Disconnessione…</string>
+    <string name="status_needs_login">Accesso richiesto</string>
+    <string name="status_needs_setup">Configura NetBird sul telefono</string>
+    <string name="status_no_network">Nessuna rete</string>
+    <string name="status_error">Errore</string>
+    <string name="status_phone_unavailable">Telefono non disponibile</string>
+
+    <string name="hint_phone_unavailable">Apri NetBird Wear sul telefono e verifica la connessione con l\'orologio.</string>
+    <string name="hint_needs_login">Apri NetBird sul telefono ed esegui l\'accesso.</string>
+    <string name="hint_needs_setup">Apri NetBird sul telefono, aggiungi un profilo e approva la richiesta VPN.</string>
+
+    <string name="action_connect">Connetti</string>
+    <string name="action_disconnect">Disconnetti</string>
+    <string name="action_refresh">Aggiorna</string>
+    <string name="action_send">Invia</string>
+
+    <string name="label_device">Dispositivo: %1$s</string>
+    <string name="label_sending">Invio al telefono…</string>
+    <string name="label_no_phone_node">Nessuna connessione Data Layer con il telefono</string>
+    <string name="label_send_failed">Impossibile raggiungere il telefono</string>
+    <string name="label_no_response">Il telefono non ha risposto</string>
+    <string name="label_phone_error">Controlla NetBird sul telefono per maggiori dettagli.</string>
+    <string name="tile_toggle">Attiva/disattiva</string>
+    <string name="tile_open">Apri</string>
+    <string name="label_peers">Peer</string>
+    <string name="label_resources">Risorse</string>
+    <string name="label_no_peers">Nessun peer trovato</string>
+    <string name="label_no_resources">Nessuna risorsa trovata</string>
+</resources>

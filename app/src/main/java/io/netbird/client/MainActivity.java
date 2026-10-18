@@ -173,6 +173,17 @@ public class MainActivity extends AppCompatActivity implements ServiceAccessor, 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // NetBird Wear posts setup/problem notifications (VPN consent, battery
+        // optimisation). On Android 13+ they only show once the runtime
+        // notification permission has been granted, so ask here, where the app
+        // is unambiguously in the foreground.
+        if (android.os.Build.VERSION.SDK_INT >= 33
+                && checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(
+                    new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 7101);
+        }
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);

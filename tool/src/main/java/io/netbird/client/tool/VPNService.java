@@ -323,6 +323,15 @@ public class VPNService extends android.net.VpnService {
             return engineRunner.isRunning();
         }
 
+        /**
+         * Engine status label as reported by the Go core ("Connected",
+         * "Connecting", "NeedsLogin", ...). Used by the Wear bridge to mirror
+         * the connection state to the watch.
+         */
+        public String status() {
+            return engineRunner.status();
+        }
+
         // Called on every activity bind. The notification may only be
         // re-posted while the service is already in the foreground: with the
         // engine stopped the service is not foreground, and a startForeground
@@ -340,6 +349,11 @@ public class VPNService extends android.net.VpnService {
         @Nullable
         public NetworkArray networks() {
             return engineRunner.networks();
+        }
+
+        /** Subscribe without taking ownership of the activity's listener. */
+        public void addConnectionObserver(ConnectionListener observer) {
+            engineRunner.addConnectionObserver(observer);
         }
 
         public void setConnectionStateListener(ConnectionListener listener) {

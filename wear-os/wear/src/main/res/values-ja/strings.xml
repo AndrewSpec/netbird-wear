@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NetBird</string>
+    <string name="tile_label">NetBird VPN</string>
+
+    <string name="status_unknown">スマートフォンに接続中…</string>
+    <string name="status_disconnected">未接続</string>
+    <string name="status_connecting">接続中…</string>
+    <string name="status_connected">接続済み</string>
+    <string name="status_disconnecting">切断中…</string>
+    <string name="status_needs_login">ログインが必要</string>
+    <string name="status_needs_setup">スマートフォンでNetBirdを設定</string>
+    <string name="status_no_network">ネットワークなし</string>
+    <string name="status_error">エラー</string>
+    <string name="status_phone_unavailable">端末が見つかりません</string>
+
+    <string name="hint_phone_unavailable">スマートフォンでNetBird Wearを開き、時計との接続を確認してください。</string>
+    <string name="hint_needs_login">スマートフォンでNetBirdを開き、ログインしてください。</string>
+    <string name="hint_needs_setup">スマートフォンでNetBirdを開き、プロファイルを追加してVPN接続を許可してください。</string>
+
+    <string name="action_connect">接続</string>
+    <string name="action_disconnect">切断</string>
+    <string name="action_refresh">更新</string>
+    <string name="action_send">送信</string>
+
+    <string name="label_device">端末: %1$s</string>
+    <string name="label_sending">スマートフォンへ送信中…</string>
+    <string name="label_no_phone_node">スマートフォンとのData Layer接続がありません</string>
+    <string name="label_send_failed">スマートフォンに接続できませんでした</string>
+    <string name="label_no_response">スマートフォンから応答がありません</string>
+    <string name="label_phone_error">詳細はスマートフォンのNetBirdで確認してください。</string>
+    <string name="tile_toggle">切替</string>
+    <string name="tile_open">開く</string>
+    <string name="label_peers">ピア</string>
+    <string name="label_resources">リソース</string>
+    <string name="label_no_peers">ピアが見つかりません</string>
+    <string name="label_no_resources">リソースが見つかりません</string>
+</resources>

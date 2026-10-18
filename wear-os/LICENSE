@@ -1,0 +1,22 @@
+NetBird Wear is an unofficial community project with multiple licenses.
+
+Original Wear OS Kotlin code, tests, build scripts and documentation are
+Copyright 2026 AndrewSpec and licensed under Apache License 2.0;
+see LICENSES/Apache-2.0.txt.
+
+patches/netbird-wear.patch contains changes to netbirdio/android-client.
+The patch and the resulting Android client are distributed under GNU GPL v3;
+see LICENSES/GPL-3.0.txt. Upstream copyright notices remain applicable.
+
+NetBird logo resources in wear/src/main/res/drawable/ic_netbird.xml,
+ic_launcher_foreground.xml and ic_netbird_tile.png were copied/adapted from
+the GPL-3.0 Android client and remain covered by that license. The combined
+watch APK includes these resources and is distributed under GPL-3.0 terms;
+the independently authored source code retains its Apache-2.0 license.
+
+The NetBird Go client has BSD-3-Clause licensing, with exceptions documented
+in its upstream repository; see LICENSES/NetBird-BSD-3-Clause.txt. Third-party
+components retain their own licenses. See NOTICE.md and release source bundles.
+
+No trademark rights are granted. NetBird and its logo belong to their respective
+owners. This project is not affiliated with or endorsed by NetBird GmbH.

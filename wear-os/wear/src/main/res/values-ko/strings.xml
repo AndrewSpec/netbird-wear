@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NetBird</string>
+    <string name="tile_label">NetBird VPN</string>
+
+    <string name="status_unknown">휴대전화 확인 중…</string>
+    <string name="status_disconnected">연결 끊김</string>
+    <string name="status_connecting">연결 중…</string>
+    <string name="status_connected">연결됨</string>
+    <string name="status_disconnecting">연결 해제 중…</string>
+    <string name="status_needs_login">로그인 필요</string>
+    <string name="status_needs_setup">휴대전화에서 NetBird 설정</string>
+    <string name="status_no_network">네트워크 없음</string>
+    <string name="status_error">오류</string>
+    <string name="status_phone_unavailable">휴대전화 연결 불가</string>
+
+    <string name="hint_phone_unavailable">휴대전화에서 NetBird Wear를 열고 워치와의 연결을 확인하세요.</string>
+    <string name="hint_needs_login">휴대전화에서 NetBird를 열고 로그인하세요.</string>
+    <string name="hint_needs_setup">휴대전화에서 NetBird를 열고 프로필 추가 및 VPN 연결을 허용하세요.</string>
+
+    <string name="action_connect">연결</string>
+    <string name="action_disconnect">연결 해제</string>
+    <string name="action_refresh">새로고침</string>
+    <string name="action_send">보내기</string>
+
+    <string name="label_device">기기: %1$s</string>
+    <string name="label_sending">휴대전화로 전송 중…</string>
+    <string name="label_no_phone_node">휴대전화와 Data Layer 연결이 없습니다</string>
+    <string name="label_send_failed">휴대전화에 연결할 수 없습니다</string>
+    <string name="label_no_response">휴대전화에서 응답이 없습니다</string>
+    <string name="label_phone_error">자세한 내용은 휴대전화의 NetBird에서 확인하세요.</string>
+    <string name="tile_toggle">전환</string>
+    <string name="tile_open">열기</string>
+    <string name="label_peers">피어</string>
+    <string name="label_resources">리소스</string>
+    <string name="label_no_peers">피어가 없습니다</string>
+    <string name="label_no_resources">리소스가 없습니다</string>
+</resources>

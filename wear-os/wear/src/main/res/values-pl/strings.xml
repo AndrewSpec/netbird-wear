@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NetBird</string>
+    <string name="tile_label">NetBird VPN</string>
+
+    <string name="status_unknown">Sprawdzam telefon…</string>
+    <string name="status_disconnected">Rozłączony</string>
+    <string name="status_connecting">Łączenie…</string>
+    <string name="status_connected">Połączony</string>
+    <string name="status_disconnecting">Rozłączanie…</string>
+    <string name="status_needs_login">Wymagane logowanie</string>
+    <string name="status_needs_setup">Skonfiguruj NetBird na telefonie</string>
+    <string name="status_no_network">Brak sieci</string>
+    <string name="status_error">Błąd</string>
+    <string name="status_phone_unavailable">Brak telefonu</string>
+
+    <string name="hint_phone_unavailable">Otwórz NetBird Wear na telefonie i sprawdź połączenie z zegarkiem.</string>
+    <string name="hint_needs_login">Otwórz NetBird na telefonie i zaloguj się.</string>
+    <string name="hint_needs_setup">Otwórz NetBird na telefonie, dodaj profil i zatwierdź zgodę VPN.</string>
+
+    <string name="action_connect">Połącz</string>
+    <string name="action_disconnect">Rozłącz</string>
+    <string name="action_refresh">Odśwież</string>
+    <string name="action_send">Wyślij</string>
+
+    <string name="label_device">Urządzenie: %1$s</string>
+    <string name="label_sending">Wysyłam do telefonu…</string>
+    <string name="label_no_phone_node">Brak połączenia Data Layer z telefonem</string>
+    <string name="label_send_failed">Nie udało się wysłać do telefonu</string>
+    <string name="label_no_response">Telefon nie odpowiedział</string>
+    <string name="label_phone_error">Sprawdź szczegóły w aplikacji NetBird na telefonie.</string>
+    <string name="tile_toggle">Przełącz</string>
+    <string name="tile_open">Otwórz</string>
+    <string name="label_peers">Peers</string>
+    <string name="label_resources">Zasoby</string>
+    <string name="label_no_peers">Brak peers</string>
+    <string name="label_no_resources">Brak zasobów</string>
+</resources>

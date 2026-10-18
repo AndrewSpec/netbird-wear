@@ -19,6 +19,11 @@
     </queries>
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- Automation is opt-in for callers signed with our key, not arbitrary apps. -->
+    <permission
+        android:name="io.netbird.client.permission.CONTROL_VPN"
+        android:protectionLevel="signature" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
@@ -83,6 +88,32 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+
+        <!-- Wear OS bridge: receives commands from the paired watch. -->
+        <service
+            android:name="io.netbird.client.wear.WearBridgeService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
+                <data
+                    android:scheme="wear"
+                    android:host="*"
+                    android:pathPrefix="/netbird" />
+            </intent-filter>
+        </service>
+
+        <!-- Headless automation API (Tasker/Automate/MacroDroid). -->
+        <receiver
+            android:name="io.netbird.client.wear.AutomationReceiver"
+            android:exported="true"
+            android:permission="io.netbird.client.permission.CONTROL_VPN">
+            <intent-filter>
+                <action android:name="io.netbird.client.automation.CONNECT" />
+                <action android:name="io.netbird.client.automation.DISCONNECT" />
+                <action android:name="io.netbird.client.automation.TOGGLE" />
+                <action android:name="io.netbird.client.automation.STATUS" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

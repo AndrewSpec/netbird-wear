@@ -27,6 +27,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    testOptions {
+        // Connection callback fan-out only uses android.util.Log, not Android runtime APIs.
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {

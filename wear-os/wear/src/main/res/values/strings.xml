@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NetBird</string>
+    <string name="tile_label">NetBird VPN</string>
+
+    <string name="status_unknown">Contacting phone…</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_connecting">Connecting…</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_disconnecting">Disconnecting…</string>
+    <string name="status_needs_login">Login required</string>
+    <string name="status_needs_setup">Set up NetBird on the phone</string>
+    <string name="status_no_network">No network</string>
+    <string name="status_error">Error</string>
+    <string name="status_phone_unavailable">Phone unavailable</string>
+
+    <string name="hint_phone_unavailable">Open NetBird Wear on the phone and check the connection to the watch.</string>
+    <string name="hint_needs_login">Open NetBird on the phone and sign in.</string>
+    <string name="hint_needs_setup">Open NetBird on the phone, add a profile and allow the VPN request.</string>
+
+    <string name="action_connect">Connect</string>
+    <string name="action_disconnect">Disconnect</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_send">Send</string>
+
+    <string name="label_device">Device: %1$s</string>
+    <string name="label_sending">Sending to phone…</string>
+    <string name="label_no_phone_node">No Data Layer connection to the phone</string>
+    <string name="label_send_failed">Could not reach the phone</string>
+    <string name="label_no_response">The phone did not respond</string>
+    <string name="label_phone_error">Check NetBird on your phone for details.</string>
+    <string name="tile_toggle">Toggle</string>
+    <string name="tile_open">Open</string>
+    <string name="label_peers">Peers</string>
+    <string name="label_resources">Resources</string>
+    <string name="label_no_peers">No peers found</string>
+    <string name="label_no_resources">No resources found</string>
+</resources>

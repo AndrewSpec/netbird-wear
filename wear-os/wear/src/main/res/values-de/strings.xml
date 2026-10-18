@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NetBird</string>
+    <string name="tile_label">NetBird VPN</string>
+
+    <string name="status_unknown">Telefon wird kontaktiert…</string>
+    <string name="status_disconnected">Nicht verbunden</string>
+    <string name="status_connecting">Verbinden…</string>
+    <string name="status_connected">Verbunden</string>
+    <string name="status_disconnecting">Trennen…</string>
+    <string name="status_needs_login">Anmeldung erforderlich</string>
+    <string name="status_needs_setup">NetBird auf dem Telefon einrichten</string>
+    <string name="status_no_network">Kein Netzwerk</string>
+    <string name="status_error">Fehler</string>
+    <string name="status_phone_unavailable">Telefon nicht erreichbar</string>
+
+    <string name="hint_phone_unavailable">Öffne NetBird Wear auf dem Telefon und prüfe die Verbindung zur Uhr.</string>
+    <string name="hint_needs_login">Öffne NetBird auf dem Telefon und melde dich an.</string>
+    <string name="hint_needs_setup">Öffne NetBird auf dem Telefon, füge ein Profil hinzu und erlaube die VPN-Verbindung.</string>
+
+    <string name="action_connect">Verbinden</string>
+    <string name="action_disconnect">Trennen</string>
+    <string name="action_refresh">Aktualisieren</string>
+    <string name="action_send">Senden</string>
+
+    <string name="label_device">Gerät: %1$s</string>
+    <string name="label_sending">Senden an Telefon…</string>
+    <string name="label_no_phone_node">Keine Data Layer-Verbindung zum Telefon</string>
+    <string name="label_send_failed">Telefon konnte nicht erreicht werden</string>
+    <string name="label_no_response">Telefon hat nicht geantwortet</string>
+    <string name="label_phone_error">Details in NetBird auf dem Telefon prüfen.</string>
+    <string name="tile_toggle">Umschalten</string>
+    <string name="tile_open">Öffnen</string>
+    <string name="label_peers">Peers</string>
+    <string name="label_resources">Ressourcen</string>
+    <string name="label_no_peers">Keine Peers gefunden</string>
+    <string name="label_no_resources">Keine Ressourcen gefunden</string>
+</resources>
