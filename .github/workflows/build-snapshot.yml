@@ -78,7 +78,9 @@ jobs:
           }
           release_runs=$(count_runs build-release.yml)
           snapshot_runs=$(count_runs build-snapshot.yml)
-          version_code=$((release_runs + snapshot_runs + 40))
+          # Fork migration reset Actions history. Preserve the original two
+          # release runs (published versionCode 42) in the counter baseline.
+          version_code=$((release_runs + snapshot_runs + 42))
           echo "Release runs: $release_runs, snapshot runs: $snapshot_runs -> version_code=$version_code"
           echo "version_code=$version_code" >> "$GITHUB_OUTPUT"
 
